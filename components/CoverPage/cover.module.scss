@@ -1,0 +1,104 @@
+.cover_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #fff;
+
+    .cover_tiitle {
+        color: #fff;
+        font-size: 50px;
+        line-height: 1.2;
+        text-shadow: 1px 2px rgba(255, 255, 255, .1);
+    }
+
+    .cover_welcome {
+        font-size: 20px;
+        color: #fff;
+    }
+
+    .cover_search {
+        width: 304px;
+        height: 40px;
+        margin-top: 32px;
+        background: lightblue;
+        border-radius: 10000px;
+        font-size: 12px;
+
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .cover_nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0 16px;
+        margin-top: 16px;
+
+        .nav_btn {
+            font-size: 14px;
+            padding: 4px 2px;
+            margin: 0 4px;
+            text-shadow: 1px 1px 2px #ccc;
+            font-weight: bolder;
+            border: none;
+            color: #fff;
+            opacity: .75;
+            border-bottom: 2px solid transparent;
+            cursor: var(--pointer);
+
+            &:hover {
+                color: var(--hoverCoverNavColor);
+                opacity: 1;
+                border-bottom: 2px solid var(--hoverCoverNavColor);
+
+            }
+        }
+    }
+
+    .to_next {
+        transform: rotate(90deg) translateY(0);
+        color: #fff;
+        font-size: 40px;
+        position: absolute;
+        bottom: 50px;
+        animation: toNext 2s ease-in-out infinite;
+        cursor: var(--pointer);
+    }
+
+}
+
+.cover_full {
+    height: calc(100vh + 100px);
+    padding-bottom: 100px;
+}
+
+.cover_half {
+    max-height: 640px;
+    min-height: 400px;
+    height: calc(36vh - 64px + 200px);
+}
+
+@keyframes toNext {
+    0% {
+        opacity: .9;
+        // bottom: 50px;
+        transform: rotate(90deg) translateX(0);
+    }
+
+    50% {
+        opacity: .1;
+        // bottom: 40px;
+        transform: rotate(90deg) translateX(10px);
+    }
+
+    100% {
+        opacity: .9;
+        // bottom: 50px;
+        transform: rotate(90deg) translateX(0);
+    }
+}

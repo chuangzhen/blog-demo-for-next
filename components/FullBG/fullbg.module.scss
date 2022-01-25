@@ -1,0 +1,33 @@
+// @import 'src/styles/global.scss';
+
+.back_stetch {
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    height: 924px;
+    z-index: -999999;
+    position: fixed;
+
+    .back_stetch_item {
+        position: absolute;
+        margin: 0px;
+        padding: 0px;
+        border: none;
+        width: 100%;
+        height: 100%;
+        z-index: -999999;
+
+        & img {
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+            border: none;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            inset: auto;
+        }
+    }
+}
