@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useMemo } from "react";
 import classnames from "classnames";
 import styles from './nav.module.scss'
 import { useRouter } from "next/router";
 
-const NavIndex: React.FC<any> = () => {
+import {INavProps} from '../Layout'
+
+
+const NavIndex: React.FC<{navs:Array<INavProps>}> = ({navs}) => {
     //路由对象
-    // const { router } = useRouter()
+    const  router = useRouter()
     const scrollInstanceRef = useRef<number>(200)
     const [showNav, setShowNav] = useState<boolean>(false)
     useEffect(() => {
 
-        console.log(123);
         
         let docEle = document.documentElement || document.body
         let ch = docEle?.clientHeight - 300 
@@ -24,6 +26,7 @@ const NavIndex: React.FC<any> = () => {
         })
     }, [])
 
+    //更新导航栏展示状态函数
     const handleNavShow = (clientHeight:number,scrollTopDis:number) => {
         if ( clientHeight - scrollTopDis < 0) {
             setShowNav(true)
@@ -31,19 +34,20 @@ const NavIndex: React.FC<any> = () => {
             setShowNav(false)
         }
     }
+   
 
 
     return <div className={classnames(
         styles.nav,styles.auto, showNav ? styles.show_nav : '',
     )}>
         <div className={styles.nav_content_pc}>
-            <div className={styles.nav_btn} onClick={() => {
-                console.log(123);
-                
-            }}>Sunshine的博客</div>
-            <div className={styles.nav_btn}>笔记</div>
-            <div className={styles.nav_btn}>日记</div>
-            <div className={styles.nav_btn}>关于我</div>
+            {
+                navs.map((i:INavProps,index:number) => {
+                    return  <div key={i.key + index}  className={styles.nav_btn} onClick={() => {
+                        router.push(`${i.path}`)
+                    }}>{i.title}</div>
+                })
+            }
             <div style={{ flex: 1 }}></div>
             {/* <div className={styles.nav_btn}>登录</div> */}
 
